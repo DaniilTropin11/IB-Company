@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace IB_Company.Models
 {
@@ -7,6 +8,7 @@ namespace IB_Company.Models
 		[Key]
 		public int Id { get; set; }
 		public string Name { get; set; }
+		[DisplayName ("DisplayOrder")]
 		public int DisplayOrder { get; set; }
 
 
