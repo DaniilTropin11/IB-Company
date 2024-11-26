@@ -31,9 +31,14 @@ namespace IB_Company.Controllers
 		[ValidateAntiForgeryToken]
         public IActionResult Create(Category obj) // метод get Для операции create 
 		{
-			_db.Category.Add(obj);
-			_db.SaveChanges();
-			return RedirectToAction("Index");
+			if (ModelState.IsValid)//валидация на стороне добавления 
+			{
+				_db.Category.Add(obj);
+				_db.SaveChanges();
+				return RedirectToAction("Index");
+			}
+
+			return View(obj);
         }
     }
 }
