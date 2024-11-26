@@ -10,8 +10,8 @@ namespace IB_Company.Controllers
 	{
 		private readonly ApplicationDbContext _db;
 
-        public CategoryController(ApplicationDbContext db)
-        {
+		public CategoryController(ApplicationDbContext db)
+		{
 			_db = db;
 		}
 
@@ -23,8 +23,17 @@ namespace IB_Company.Controllers
 		}
 		public IActionResult Create() // метод get Для операции create 
 		{
-			
+
 			return View();
 		}
-	}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+        public IActionResult Create(Category obj) // метод get Для операции create 
+		{
+			_db.Category.Add(obj);
+			_db.SaveChanges();
+			return RedirectToAction("Index");
+        }
+    }
 }
