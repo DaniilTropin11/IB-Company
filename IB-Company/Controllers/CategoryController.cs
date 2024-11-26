@@ -13,13 +13,18 @@ namespace IB_Company.Controllers
         public CategoryController(ApplicationDbContext db)
         {
 			_db = db;
-        }
+		}
 
 
-        public IActionResult Index()
+		public IActionResult Index()
 		{
-			IEnumerable<Category> objlist = _db.Category; 
+			IEnumerable<Category> objlist = _db.Category;
 			return View(objlist);
+		}
+		public IActionResult Create() // метод get Для операции create 
+		{
+			
+			return View();
 		}
 	}
 }
