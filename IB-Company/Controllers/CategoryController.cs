@@ -59,9 +59,9 @@ namespace IB_Company.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Edit (Category obj) 
+		public IActionResult Edit(Category obj)
 		{
-			if (ModelState.IsValid) 
+			if (ModelState.IsValid)
 			{
 				_db.Category.Update(obj);
 				_db.SaveChanges();
@@ -70,5 +70,37 @@ namespace IB_Company.Controllers
 
 			return View(obj);
 		}
+		///------------------------------------------------
+		public IActionResult Delete(int? id) // метод get Для операции delete
+		{
+			if (id == null || id == 0)
+			{
+				return NotFound();
+			}
+			var obj = _db.Category.Find(id);
+			if (obj == null)
+			{
+				return NotFound();
+			}
+			return View(obj);
+		}
+
+		// метод get Для операции delete
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult DeletePost(int? id)
+		{
+			var obj = _db.Category.Find(id);
+			if (obj == null)
+			{
+				return NotFound();
+			}
+			_db.Category.Remove(obj);
+			_db.SaveChanges();
+			return RedirectToAction("Index");
+
+		}
+
 	}
 }
