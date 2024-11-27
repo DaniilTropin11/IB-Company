@@ -29,7 +29,7 @@ namespace IB_Company.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-        public IActionResult Create(Category obj) // метод get Для операции create 
+		public IActionResult Create(Category obj) // метод get Для операции create 
 		{
 			if (ModelState.IsValid) //валидация на стороне добавления 
 			{
@@ -39,22 +39,23 @@ namespace IB_Company.Controllers
 			}
 
 			return View(obj);
-        }
-		public IActionResult Edit(int? id) // метод get Для операции редактирования 
+		}
+
+		public IActionResult Edit(int? id)
 		{
 			if (id == null || id == 0)
 			{
-				{
-					return NotFound();
-				}
-				var obj = _db.Category.Find(id);
-				if (obj == null)
-				{ 
-					return NotFound();
-				}
+				return NotFound();
 			}
+			var obj = _db.Category.Find(id);
+			if (obj == null)
+			{
+				return NotFound();
+			}
+			return View(obj);
 
-			return View();
+
+
 		}
 	}
 }
