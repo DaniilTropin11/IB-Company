@@ -53,9 +53,22 @@ namespace IB_Company.Controllers
 				return NotFound();
 			}
 			return View(obj);
+		}
 
+		// метод get Для операции edit
 
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Edit (Category obj) 
+		{
+			if (ModelState.IsValid) 
+			{
+				_db.Category.Update(obj);
+				_db.SaveChanges();
+				return RedirectToAction("Index");
+			}
 
+			return View(obj);
 		}
 	}
 }
