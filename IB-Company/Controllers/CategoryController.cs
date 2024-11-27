@@ -40,5 +40,21 @@ namespace IB_Company.Controllers
 
 			return View(obj);
         }
-    }
+		public IActionResult Edit(int? id) // метод get Для операции редактирования 
+		{
+			if (id == null || id == 0)
+			{
+				{
+					return NotFound();
+				}
+				var obj = _db.Category.Find(id);
+				if (obj == null)
+				{ 
+					return NotFound();
+				}
+			}
+
+			return View();
+		}
+	}
 }
