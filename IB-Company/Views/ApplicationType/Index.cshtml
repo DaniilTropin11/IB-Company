@@ -3,13 +3,13 @@
 <div class="container p-3">
 	<div class="row pt-4">
 		<div class="col-6">
-			<h2 class="text-primary"> ApplicationType List</h2>
+			<h2 class="text-primary"> ApplicationTypeList</h2>
 		</div>
-		<div class="col-6 text-right" >
-			<a  asp-action="Create" class="btn btn-primary">
-				Create New Application Type (Создание нового типа )
+		<div class="col-6 text-right">
+			<a asp-action="Create" class="btn btn-primary">
+				<i class="fas fa-plus"></i> &nbsp; Create New ApplicationTypeList(Создание новой таблицы)
 			</a>
-			
+
 		</div>
 	</div>
 	<br /><br />
@@ -19,9 +19,11 @@
 			<thead>
 				<tr>
 					<th>
-						 Name (Имя)
+						Category Name (Имя категории)
 					</th>
-					
+					<th>
+						Display Order (Порядковый номер)
+					</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -30,8 +32,16 @@
 				{
 					<tr>
 						<td width="50%"> @obj.Name</td>
-					
-						<td></td>
+						<td class="text-center">
+							<div class="w-75 btn-group" role="group">
+								<a asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-2">
+									<i class="fas fa-edit"></i> &nbsp;
+								</a>
+								<a  asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
+									<i class="fas fa-trash-alt"></i> &nbsp;
+								</a>
+							</div>
+						</td>
 					</tr>
 				}
 			</tbody>
@@ -40,10 +50,8 @@
 	}
 	else
 	{
-		<p>No application type exists.</p>
+		<p>No category exists.</p>
 	}
 </div>
 
 
-@* ПРОВЕРЯЮ КОММИТ В ГИТ  *@
-@* т.е вот так пишу код и следом фиксирую комментариями  *@
