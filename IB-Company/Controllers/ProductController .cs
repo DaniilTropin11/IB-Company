@@ -1,6 +1,7 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,15 @@ namespace IB_Company.Controllers
 		}
 		public IActionResult Upsert(int? id) // метод get Для операции Upsert 
 		{
-			Product product = new Product();
+			IEnumerable<SelectListItem> CategoryDropDown = _db.Category.Select(i => new SelectListItem
+			{
+				Text = i.Name,
+				Value = i.Id.ToString()
+			}); // получаем все категориии из БД , конвертируя их в специальный список дял выбора который является перечисляемым IEnumerable
+
+			ViewBag.CategoryDropDown = CategoryDropDown;
+
+            Product product = new Product();
 			if (id == null)
 			{
 				// если значение нулевое , это означает что поступил запрос на создание новой сущности
