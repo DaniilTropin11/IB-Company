@@ -7,7 +7,7 @@ namespace IB_Company.Models
 	public class Product
 	{
 		[Key]
-		public int ID { get; set; }
+		public int Id { get; set; }
 
 		[Required]
 		public string Name { get; set; }
