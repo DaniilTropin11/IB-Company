@@ -36,9 +36,11 @@ namespace IB_Company.Controllers
 				Value = i.Id.ToString()
 			}); // получаем все категориии из БД , конвертируя их в специальный список дял выбора который является перечисляемым IEnumerable
 
-			ViewBag.CategoryDropDown = CategoryDropDown;
+			//ViewBag.CategoryDropDown = CategoryDropDown;
+			ViewData["CategoryDropDown"] = CategoryDropDown;
 
-            Product product = new Product();
+
+			Product product = new Product();
 			if (id == null)
 			{
 				// если значение нулевое , это означает что поступил запрос на создание новой сущности
