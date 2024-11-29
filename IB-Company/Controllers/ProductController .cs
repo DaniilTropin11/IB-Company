@@ -27,15 +27,29 @@ namespace IB_Company.Controllers
 			
 			return View(objlist);
 		}
-		public IActionResult Create() // метод get Для операции create 
+		public IActionResult Upsert(int? id) // метод get Для операции Upsert 
 		{
-
-			return View();
+			Product product = new Product();
+			if (id == null)
+			{
+				// если значение нулевое , это означает что поступил запрос на создание новой сущности
+				return View(product);
+			}
+			else 
+			{
+				// когда id имеет какое значение , нужно получить продукт из БД и передать этот объект в View
+				product = _db.Product.Find(id);
+				if (product == null) 
+				{
+					return NotFound();
+				}
+				return View(product);
+			}
 		}
-
+		// метод post Для операции Upsert 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Create(Category obj) // метод get Для операции create 
+		public IActionResult Upsert(Category obj) 
 		{
 			if (ModelState.IsValid) //валидация на стороне добавления 
 			{
@@ -47,35 +61,7 @@ namespace IB_Company.Controllers
 			return View(obj);
 		}
 
-		public IActionResult Edit(int? id)
-		{
-			if (id == null || id == 0)
-			{
-				return NotFound();
-			}
-			var obj = _db.Category.Find(id);
-			if (obj == null)
-			{
-				return NotFound();
-			}
-			return View(obj);
-		}
 
-		// метод get Для операции edit
-
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public IActionResult Edit(Category obj)
-		{
-			if (ModelState.IsValid)
-			{
-				_db.Category.Update(obj);
-				_db.SaveChanges();
-				return RedirectToAction("Index");
-			}
-
-			return View(obj);
-		}
 		///------------------------------------------------
 		public IActionResult Delete(int? id) // метод get Для операции delete
 		{
