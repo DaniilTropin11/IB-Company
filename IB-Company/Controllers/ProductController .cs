@@ -1,7 +1,9 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
+using IB_Company.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,31 +32,44 @@ namespace IB_Company.Controllers
 		}
 		public IActionResult Upsert(int? id) // метод get Для операции Upsert 
 		{
-			IEnumerable<SelectListItem> CategoryDropDown = _db.Category.Select(i => new SelectListItem
+			//IEnumerable<SelectListItem> CategoryDropDown = _db.Category.Select(i => new SelectListItem
+			//{
+			//	Text = i.Name,
+			//	Value = i.Id.ToString()
+			//}); // получаем все категориии из БД , конвертируя их в специальный список дял выбора который является перечисляемым IEnumerable
+
+			////ViewBag.CategoryDropDown = CategoryDropDown;
+			//ViewData["CategoryDropDown"] = CategoryDropDown;
+
+
+			//Product product = new Product();
+
+
+			ProductVM productVM = new ProductVM()
 			{
-				Text = i.Name,
-				Value = i.Id.ToString()
-			}); // получаем все категориии из БД , конвертируя их в специальный список дял выбора который является перечисляемым IEnumerable
+					Product = new Product(),
+					CategorySelectList = _db.Category.Select(i => new SelectListItem
+					{
+						Text = i.Name,
+						Value = i.Id.ToString()
+					})
+				};
+			
 
-			//ViewBag.CategoryDropDown = CategoryDropDown;
-			ViewData["CategoryDropDown"] = CategoryDropDown;
-
-
-			Product product = new Product();
-			if (id == null)
+            if (id == null)
 			{
 				// если значение нулевое , это означает что поступил запрос на создание новой сущности
-				return View(product);
+				return View(productVM);
 			}
 			else 
 			{
-				// когда id имеет какое значение , нужно получить продукт из БД и передать этот объект в View
-				product = _db.Product.Find(id);
-				if (product == null) 
+                // когда id имеет какое значение , нужно получить продукт из БД и передать этот объект в View
+                productVM.Product = _db.Product.Find(id);
+				if (productVM.Product == null) 
 				{
 					return NotFound();
 				}
-				return View(product);
+				return View(productVM);
 			}
 		}
 		// метод post Для операции Upsert 
