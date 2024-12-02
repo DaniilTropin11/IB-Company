@@ -1,11 +1,14 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
 using IB_Company.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace IB_Company.Controllers
@@ -13,10 +16,12 @@ namespace IB_Company.Controllers
 	public class ProductController : Controller
 	{
 		private readonly ApplicationDbContext _db;
+		private readonly IWebHostEnvironment _webHostEnvironment;	
 
-		public ProductController(ApplicationDbContext db)
+		public ProductController(ApplicationDbContext db,IWebHostEnvironment webHostEnvironment)
 		{
 			_db = db;
+			_webHostEnvironment = webHostEnvironment;
 		}
 
 
@@ -75,16 +80,39 @@ namespace IB_Company.Controllers
 		// метод post Для операции Upsert 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Upsert(Category obj) 
+		public IActionResult Upsert(ProductVM productVM) 
 		{
 			if (ModelState.IsValid) //валидация на стороне добавления 
 			{
-				_db.Category.Add(obj);
-				_db.SaveChanges();
+				var files = HttpContext.Request.Form.Files;
+				string webRootPath = _webHostEnvironment.WebRootPath;
+
+				if (productVM.Product.Id == 0)
+				{
+					// создание
+					string upload = webRootPath + WC.ImagePath;
+					string fileName = Guid.NewGuid().ToString();
+					string extension = Path.GetExtension(files[0].FileName);
+
+					using (var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create))
+					{
+						files[0].CopyTo(fileStream);
+					}
+
+					productVM.Product.Image = fileName + extension;
+
+					_db.Product.Add(productVM.Product);
+
+				}
+				else
+				{
+					//обновление 
+				}
+				_db.SaveChanges();	
 				return RedirectToAction("Index");
 			}
 
-			return View(obj);
+			return View();
 		}
 
 
