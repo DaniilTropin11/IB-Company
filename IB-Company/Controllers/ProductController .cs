@@ -142,8 +142,14 @@ namespace IB_Company.Controllers
 				_db.SaveChanges();	
 				return RedirectToAction("Index");
 			}
+			productVM.CategorySelectList = _db.Category.Select(i => new SelectListItem
+			{
+				Text = i.Name,
+				Value = i.Id.ToString()
+			});
 
-			return View();
+
+            return View(productVM);
 		}
 
 
