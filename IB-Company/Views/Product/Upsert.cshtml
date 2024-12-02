@@ -101,7 +101,7 @@
             @* Keep this empty *@
             @if (Model.Product.Id !=0)
             {
-                   < src="@WC.ImagePath@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb" />
+                   <src="@WC.ImagePath@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb" />
             }
             
 
@@ -113,7 +113,7 @@
 @section Scripts {
 
     @{
-            <partial name="_ValidationScriptsPartial"></partial>
+            <partial name="_ValidationScriptsPartial" />
     }
     <script>
         $(document).ready(function () {
