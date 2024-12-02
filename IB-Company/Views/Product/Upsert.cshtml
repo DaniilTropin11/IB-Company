@@ -107,8 +107,25 @@
 @section Scripts {
 
     @{
-        <partial name="_ValidationScriptsPartial"></partial>
+            <partial name="_ValidationScriptsPartial"></partial>
     }
+    <script>
+        function validateInput()
+        {
+            if (document.getElementById("uploadBox").value == "") 
+            {
+                Swal.fire 
+                (
+                   'Ошибка!',
+                   'Пожалуйста загрузите изображение!',
+                   'error'
+
+                )
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 }
 
