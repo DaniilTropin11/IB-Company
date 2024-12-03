@@ -15,12 +15,22 @@ namespace IB_Company.Models
 		[Range(1, int.MaxValue)]
 		public double Price { get; set; }
 		public string Image { get; set; }
-		[Display(Name="Category Type")]
+		[Display(Name = "Category Type")]
 
 		public int CategoryId { get; set; } // связь сущности Category и Product
-		[ForeignKey ("CategoryId")]
-		
+		[ForeignKey("CategoryId")]
+
 		public virtual Category Category { get; set; }
 
-	}
+
+        [Display(Name = "Application Type")]
+
+        public int ApplicationTypeId { get; set; } // связь сущности ApplictaionType и Product
+        [ForeignKey("ApplicationTypeId")]
+
+        public virtual ApplicationType ApplicationType { get; set; }
+
+
+
+    }
 }

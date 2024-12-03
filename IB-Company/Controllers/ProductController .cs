@@ -32,8 +32,9 @@ namespace IB_Company.Controllers
 			IEnumerable<Product> objlist = _db.Product;
 			foreach (var obj in objlist)
 			{
-				obj.Category = _db.Category.FirstOrDefault(u => u.Id== obj.CategoryId);
-			};
+				obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
+                obj.ApplicationType = _db.ApplicationType.FirstOrDefault(u => u.Id == obj.ApplicationTypeId);
+            };
 			
 			return View(objlist);
 		}
@@ -59,8 +60,13 @@ namespace IB_Company.Controllers
 					{
 						Text = i.Name,
 						Value = i.Id.ToString()
-					})
-				};
+					}),
+                ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
 			
 
             if (id == null)
@@ -147,6 +153,11 @@ namespace IB_Company.Controllers
 				Text = i.Name,
 				Value = i.Id.ToString()
 			});
+            productVM.ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
 
 
             return View(productVM);
@@ -160,7 +171,7 @@ namespace IB_Company.Controllers
 			{
 				return NotFound();
 			}
-			Product product = _db.Product.Include(u => u.Category).FirstOrDefault(u => u.Id == id); // жадная загрузка 
+			Product product = _db.Product.Include(u => u.Category).Include(u => u.ApplicationType).FirstOrDefault(u => u.Id == id); // жадная загрузка 
 			//product.Category = _db.Category.Find(product.CategoryId);
 
 			if (product == null)
