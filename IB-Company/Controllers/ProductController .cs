@@ -29,12 +29,12 @@ namespace IB_Company.Controllers
 
 		public IActionResult Index()
 		{
-			IEnumerable<Product> objlist = _db.Product;
-			foreach (var obj in objlist)
-			{
-				obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
-                obj.ApplicationType = _db.ApplicationType.FirstOrDefault(u => u.Id == obj.ApplicationTypeId);
-            };
+			IEnumerable<Product> objlist = _db.Product.Include(u=>u.Category).Include(u=>u.ApplicationType);
+			//foreach (var obj in objlist)
+			//{
+			//	obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
+   //             obj.ApplicationType = _db.ApplicationType.FirstOrDefault(u => u.Id == obj.ApplicationTypeId);
+   //         };
 			
 			return View(objlist);
 		}
