@@ -11,6 +11,8 @@ namespace IB_Company.Models
 
 		[Required]
 		public string Name { get; set; }
+		public string ShortDesc { get; set; }
+
 		public string Description { get; set; }
 		[Range(1, int.MaxValue)]
 		public double Price { get; set; }
