@@ -29,6 +29,12 @@ namespace IB_Company
 			services.AddDbContext<ApplicationDbContext>(options =>
 			options.UseSqlServer(
 				Configuration.GetConnectionString("DefaultConnection")));
+			services.AddHttpContextAccessor();
+			services.AddSession(Options => { 
+				Options.IdleTimeout = TimeSpan.FromSeconds(10);
+				Options.Cookie.HttpOnly = true;
+				Options.Cookie.IsEssential = true;
+			});
 
 			services.AddControllersWithViews();
 		}
@@ -52,7 +58,7 @@ namespace IB_Company
 			app.UseRouting();
 
 			app.UseAuthorization();
-
+			app.UseSession();
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(
