@@ -1,6 +1,8 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
 using IB_Company.Models.ViewModels;
+using IB_Company.Utility;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -46,8 +48,24 @@ namespace IB_Company.Controllers
 
 
 		}
+		[HttpPost,ActionName("Details")]
+        public IActionResult DetailsPost(int id)
 
-		public IActionResult Privacy()
+        {
+            List <ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+			if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart)!=null
+				&& HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart).Count() > 0)
+			{
+                shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
+			}
+			shoppingCartList.Add(new ShoppingCart { ProductId = id });
+			HttpContext.Session.Set(WC.SessionCart, shoppingCartList);
+            return RedirectToAction(nameof(Index));
+
+
+        }
+
+        public IActionResult Privacy()
 		{
 			return View();
 		}
