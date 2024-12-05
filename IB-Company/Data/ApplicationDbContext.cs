@@ -1,9 +1,10 @@
 ﻿using IB_Company.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace IB_Company.Data
 {
-	public class ApplicationDbContext : DbContext
+	public class ApplicationDbContext : IdentityDbContext
 	{
         public ApplicationDbContext(DbContextOptions <ApplicationDbContext> options) : base(options) 
         {
