@@ -64,7 +64,8 @@ namespace IB_Company.Controllers
             IEnumerable<Product> prodList = _db.Product.Where(u => prodInCart.Contains(u.Id));
             ProductUserVM = new ProductUserVM()
             {
-                ApplicationUser = _db.ApplicationUser.FirstOrDefault(u => u.Id == claim.Value)
+                ApplicationUser = _db.ApplicationUser.FirstOrDefault(u => u.Id == claim.Value),
+                ProductList = prodList
             };
 
             return View(ProductUserVM);
