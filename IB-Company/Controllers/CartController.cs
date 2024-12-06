@@ -46,9 +46,7 @@ namespace IB_Company.Controllers
 
             return RedirectToAction(nameof(Summary));
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ActionName("Index")]
+     
         public IActionResult Summary()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity; // если пользователь вошел в систему то объект будет получен 
