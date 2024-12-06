@@ -1,12 +1,14 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
 using IB_Company.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace IB_Company.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -14,6 +16,7 @@ namespace IB_Company.Controllers
         {
             _db = db;
         }
+        [Authorize]
 
         public IActionResult Index()
         {
