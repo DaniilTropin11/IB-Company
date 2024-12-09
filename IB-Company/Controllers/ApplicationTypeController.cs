@@ -1,14 +1,15 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace IB_Company.Controllers
 {
-	
+    [Authorize(Roles = WC.AdminRole)]
 
-	public class ApplicationTypeController : Controller
+    public class ApplicationTypeController : Controller
 	{
 		private readonly ApplicationDbContext _db;
 

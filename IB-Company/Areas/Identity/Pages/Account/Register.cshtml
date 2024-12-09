@@ -2,19 +2,19 @@
 @model RegisterModel
 @if (User.IsInRole(IB_Company.WC.AdminRole))
 {
- <h1> Register an Admin Account</h1>
+ 
     <h1> Регистрация аккаунта для Админа</h1>
 }
 else
 {
-    <h1> Register</h1>
+    
     <h1> Регистрация </h1>
 }
 
 <div class="row">
     <div class="col-md-4">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account</h4>
+            
             <h4>Создание нового аккаунта</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>

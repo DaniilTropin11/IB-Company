@@ -1,6 +1,7 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
 using IB_Company.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,6 +16,7 @@ using System.Linq;
 
 namespace IB_Company.Controllers
 {
+	[Authorize(Roles = WC.AdminRole)]
 	public class ProductController : Controller
 	{
 		private readonly ApplicationDbContext _db;
