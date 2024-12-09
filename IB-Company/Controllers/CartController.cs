@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-// проверка
+
 namespace IB_Company.Controllers
 {
     [Authorize]
