@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Threading.Tasks;
 
-namespace IB_Company.Utility // реализация почты для отправки заказов от клиента 
+namespace IBCompany_Utility // реализация почты для отправки заказов от клиента 
 {
     public class EmailSender : IEmailSender
     {
@@ -17,3 +17,4 @@ namespace IB_Company.Utility // реализация почты для отпр�
 
     }
 }
+//IBCompany_Utility

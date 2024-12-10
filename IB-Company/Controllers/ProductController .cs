@@ -1,6 +1,7 @@
 ﻿using IB_Company.Data;
 using IB_Company.Models;
 using IB_Company.Models.ViewModels;
+using IBCompany_Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

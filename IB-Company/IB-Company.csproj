@@ -24,4 +24,8 @@
     <Folder Include="wwwroot\templates\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IBCompany_Utility\IBCompany_Utility.csproj" />
+  </ItemGroup>
+
 </Project>

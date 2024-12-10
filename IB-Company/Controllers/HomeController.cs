@@ -2,6 +2,7 @@
 using IB_Company.Models;
 using IB_Company.Models.ViewModels;
 using IB_Company.Utility;
+using IBCompany_Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

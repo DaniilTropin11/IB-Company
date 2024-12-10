@@ -2,6 +2,7 @@
 using IB_Company.Models;
 using IB_Company.Models.ViewModels;
 using IB_Company.Utility;
+using IBCompany_Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

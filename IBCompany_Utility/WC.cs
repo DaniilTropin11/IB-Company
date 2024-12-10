@@ -1,4 +1,4 @@
-﻿namespace IB_Company
+﻿namespace IBCompany_Utility
 {
     public static class WC
     {
