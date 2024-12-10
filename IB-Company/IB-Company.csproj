@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IBCompany_Models\IBCompany_Models.csproj" />
     <ProjectReference Include="..\IBCompany_Utility\IBCompany_Utility.csproj" />
   </ItemGroup>
 

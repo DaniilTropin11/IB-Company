@@ -1,4 +1,4 @@
-﻿using IB_Company.Models;
+﻿using IBCompany_Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

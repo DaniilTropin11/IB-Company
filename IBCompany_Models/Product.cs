@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 
-namespace IB_Company.Models
+namespace IBCompany_Models
 {
 	public class Product
 	{

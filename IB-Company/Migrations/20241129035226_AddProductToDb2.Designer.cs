@@ -20,7 +20,7 @@ namespace IB_Company.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("IB_Company.Models.ApplicationType", b =>
+            modelBuilder.Entity("IBCompany_Models.ApplicationType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace IB_Company.Migrations
                     b.ToTable("ApplicationType");
                 });
 
-            modelBuilder.Entity("IB_Company.Models.Category", b =>
+            modelBuilder.Entity("IBCompany_Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace IB_Company.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("IB_Company.Models.Product", b =>
+            modelBuilder.Entity("IBCompany_Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,9 +85,9 @@ namespace IB_Company.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("IB_Company.Models.Product", b =>
+            modelBuilder.Entity("IBCompany_Models.Product", b =>
                 {
-                    b.HasOne("IB_Company.Models.Category", "Category")
+                    b.HasOne("IBCompany_Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

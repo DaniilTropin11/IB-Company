@@ -1,6 +1,6 @@
 using System;
 
-namespace IB_Company.Models
+namespace IBCompany_Models
 {
 	public class ErrorViewModel
 	{

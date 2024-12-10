@@ -19,7 +19,7 @@ namespace IB_Company.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("IB_Company.Models.ApplicationType", b =>
+            modelBuilder.Entity("IBCompany_Models.ApplicationType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace IB_Company.Migrations
                     b.ToTable("ApplicationType");
                 });
 
-            modelBuilder.Entity("IB_Company.Models.Category", b =>
+            modelBuilder.Entity("IBCompany_Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +54,7 @@ namespace IB_Company.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("IB_Company.Models.Product", b =>
+            modelBuilder.Entity("IBCompany_Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -298,7 +298,7 @@ namespace IB_Company.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("IB_Company.Models.ApplicationUser", b =>
+            modelBuilder.Entity("IBCompany_Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -308,15 +308,15 @@ namespace IB_Company.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
-            modelBuilder.Entity("IB_Company.Models.Product", b =>
+            modelBuilder.Entity("IBCompany_Models.Product", b =>
                 {
-                    b.HasOne("IB_Company.Models.ApplicationType", "ApplicationType")
+                    b.HasOne("IBCompany_Models.ApplicationType", "ApplicationType")
                         .WithMany()
                         .HasForeignKey("ApplicationTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("IB_Company.Models.Category", "Category")
+                    b.HasOne("IBCompany_Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

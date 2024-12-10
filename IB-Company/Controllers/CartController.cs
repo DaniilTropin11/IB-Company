@@ -1,6 +1,6 @@
 ﻿using IB_Company.Data;
-using IB_Company.Models;
-using IB_Company.Models.ViewModels;
+using IBCompany_Models;
+using IBCompany_Models.ViewModels;
 using IB_Company.Utility;
 using IBCompany_Utility;
 using Microsoft.AspNetCore.Authorization;

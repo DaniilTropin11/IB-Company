@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Collections.Generic;
 
-namespace IB_Company.Models.ViewModels
+namespace IBCompany_Models.ViewModels
 {
     public class ProductVM
     {
