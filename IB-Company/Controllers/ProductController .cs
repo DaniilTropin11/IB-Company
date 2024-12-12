@@ -1,4 +1,4 @@
-﻿using IB_Company.Data;
+﻿using IBCompany_DataAccess.Data;
 using IBCompany_Models;
 using IBCompany_Models.ViewModels;
 using IBCompany_Utility;

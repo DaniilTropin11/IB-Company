@@ -1,4 +1,5 @@
-﻿using IB_Company.Data;
+﻿
+using IBCompany_DataAccess.Data;
 using IBCompany_Models;
 using IBCompany_Utility;
 using Microsoft.AspNetCore.Authorization;
