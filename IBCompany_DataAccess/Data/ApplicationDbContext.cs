@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace IB_Company.Data
+namespace IBCompany_DataAccess.Data
 {
 	public class ApplicationDbContext : IdentityDbContext
 	{

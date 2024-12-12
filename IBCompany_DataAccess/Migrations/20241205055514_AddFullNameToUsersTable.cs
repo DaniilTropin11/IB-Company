@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace IB_Company.Migrations
+namespace IBCompany_DataAccess.Migrations
 {
-    public partial class AddProductToDb : Migration
+    public partial class AddFullNameToUsersTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

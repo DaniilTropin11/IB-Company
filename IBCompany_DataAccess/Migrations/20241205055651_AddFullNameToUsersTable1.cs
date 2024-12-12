@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace IB_Company.Migrations
+namespace IBCompany_DataAccess.Migrations
 {
     public partial class AddFullNameToUsersTable1 : Migration
     {
