@@ -16,5 +16,6 @@ namespace IBCompany_DataAccess.Data
 		public DbSet<Product> Product { get; set; } 
         public DbSet<ApplicationUser> ApplicationUser {  get; set; }
 
+        public DbSet<OrderVM> Orders { get; set; }
     }
 }
